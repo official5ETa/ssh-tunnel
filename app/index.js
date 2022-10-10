@@ -1,5 +1,7 @@
 const tunnel = require("reverse-tunnel-ssh")
 
+const log = process.argv.includes("--log") || process.env.LOG === "true"
+
 const config = {
     keepAlive: true,
 
@@ -25,10 +27,12 @@ for (const event of ["SIGINT", "SIGTERM"])
 
 const connection = tunnel(config, (error, clientConnection) => {
     if (error) {
-        console.error(error)
+        if (log)
+            console.error(error)
         process.exit(1)
     }
-    else console.log(clientConnection["_forwarding"])
+    else if (log)
+        console.log(clientConnection["_forwarding"])
 })
 
 connection.once("connect", () => console.log("tunnel established"))

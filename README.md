@@ -12,3 +12,6 @@
 
 - `DST_HOST` destination host **(default: `0.0.0.0`)**
 - `DST_PORT` destination port
+
+
+- `LOG` console log **(default: `false`)**
