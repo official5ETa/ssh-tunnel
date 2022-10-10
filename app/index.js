@@ -35,4 +35,4 @@ const connection = tunnel(config, (error, clientConnection) => {
         console.log(clientConnection["_forwarding"])
 })
 
-connection.once("connect", () => console.log("tunnel established"))
+connection.once("connect", () => console.info(`established [${config.srcHost}:${config.srcPort} -> ${config.dstHost}:${config.dstPort} @ ${config.host}:${config.port}]`))
