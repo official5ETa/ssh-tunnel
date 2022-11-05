@@ -25,6 +25,11 @@ function exit(code = 0) {
 for (const event of ["SIGINT", "SIGTERM"])
     process.on(event, exit)
 
+process.on("uncaughtException", error => {
+    console.error(error.message)
+    exit(1)
+})
+
 const connection = tunnel(config, (error, clientConnection) => {
     if (error) {
         if (log)
