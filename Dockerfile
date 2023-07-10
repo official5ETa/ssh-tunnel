@@ -5,7 +5,7 @@ WORKDIR /home/node
 ENV LOG=false        \
     SSH_PORT=22      \
     SRC_HOST=0.0.0.0 \
-    DST_HOST=0.0.0.0 \
+    DST_HOST=0.0.0.0
 
 COPY app ./
 
