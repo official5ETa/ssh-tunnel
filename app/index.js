@@ -9,9 +9,8 @@ function exit(code = 0) {
   process.exit(code)
 }
 
-for (const event of ["exit", "SIGINT", "SIGTERM"]) {
+for (const event of ["exit", "SIGINT", "SIGTERM"])
   process.on(event, () => exit())
-}
 
 
 
