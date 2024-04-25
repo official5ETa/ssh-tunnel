@@ -6,12 +6,8 @@
 - `SSH_PASSWORD` password to connect to ssh-server
 
 
-- `SRC_HOST` source host **(default: `0.0.0.0`)**
 - `SRC_PORT` source port
-
-
-- `DST_HOST` destination host **(default: `0.0.0.0`)**
 - `DST_PORT` destination port
 
 
-- `LOG` console log **(default: `false`)**
+- `REVERSE` use ssh reverse tunnel **(default: `false`)**

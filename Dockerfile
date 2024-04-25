@@ -2,15 +2,14 @@ FROM node:17.2-slim
 
 WORKDIR /home/node
 
-ENV LOG=false        \
-    SSH_PORT=22      \
-    SRC_HOST=0.0.0.0 \
-    DST_HOST=0.0.0.0
+RUN apt update \
+ && apt install -y openssh-server expect \
+ && apt clean \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV SSH_PORT=22 \
+    REVERSE=false
 
 COPY app ./
 
-RUN npm ci           --no-update-notifier \
- && npm prune        --no-update-notifier \
- && npm cache verify --no-update-notifier
-
-ENTRYPOINT ["node", "index.js"]
+CMD ["node", "index.js"]

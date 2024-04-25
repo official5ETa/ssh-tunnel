@@ -1,0 +1,13 @@
+set timeout -1
+
+spawn ssh -o ExitOnForwardFailure=yes -o StrictHostKeyChecking=no -p $env(port) -$env(reverse) $env(mapping) $env(username)@$env(host)
+
+expect {
+    "pass" {
+        send "$env(password)\r"
+        exp_continue
+    }
+    "Connection established" {
+        interact
+    }
+}
